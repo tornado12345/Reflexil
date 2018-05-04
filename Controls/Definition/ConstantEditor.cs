@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2016 Sebastien LEBRETON
+/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -92,10 +92,15 @@ namespace Reflexil.Editors
 
 			ConstantTypes.Items.Add(new NoneOperandEditor());
 			ConstantTypes.Items.Add(new NullOperandEditor());
+			ConstantTypes.Items.Add(new BooleanEditor());
 			ConstantTypes.Items.Add(new ByteEditor());
 			ConstantTypes.Items.Add(new SByteEditor());
+			ConstantTypes.Items.Add(new ShortEditor());
+			ConstantTypes.Items.Add(new UShortEditor());
 			ConstantTypes.Items.Add(new IntegerEditor());
+			ConstantTypes.Items.Add(new UIntegerEditor());
 			ConstantTypes.Items.Add(new LongEditor());
+			ConstantTypes.Items.Add(new ULongEditor());
 			ConstantTypes.Items.Add(new SingleEditor());
 			ConstantTypes.Items.Add(new DoubleEditor());
 

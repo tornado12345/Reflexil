@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2016 Sebastien LEBRETON
+/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -36,7 +36,6 @@ namespace Reflexil.Forms
 		{
 			if (IsFormComplete)
 			{
-				SelectedVariable.Name = ItemName.Text;
 				SelectedVariable.VariableType = CecilImporter.Import(MethodDefinition.DeclaringType.Module, TypeSpecificationEditor.SelectedTypeReference, MethodDefinition);
 
 				DialogResult = DialogResult.OK;
@@ -49,7 +48,6 @@ namespace Reflexil.Forms
 
 		private void EditVariableForm_Load(object sender, EventArgs e)
 		{
-			ItemName.Text = SelectedVariable.Name;
 			TypeSpecificationEditor.SelectedTypeReference = SelectedVariable.VariableType;
 		}
 	}

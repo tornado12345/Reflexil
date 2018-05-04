@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2016 Sebastien LEBRETON
+/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -32,22 +32,31 @@ namespace Reflexil.Forms
 		private void ButInsertBefore_Click(object sender, EventArgs e)
 		{
 			var newins = CreateInstruction();
-			if (newins != null)
-				MethodDefinition.Body.GetILProcessor().InsertBefore(SelectedInstruction, newins);
+			if (newins == null)
+				return;
+
+			MethodDefinition.Body.GetILProcessor().InsertBefore(SelectedInstruction, newins);
+			DialogResult = DialogResult.OK;
 		}
 
 		private void ButInsertAfter_Click(object sender, EventArgs e)
 		{
 			var newins = CreateInstruction();
-			if (newins != null)
-				MethodDefinition.Body.GetILProcessor().InsertAfter(SelectedInstruction, newins);
+			if (newins == null)
+				return;
+
+			MethodDefinition.Body.GetILProcessor().InsertAfter(SelectedInstruction, newins);
+			DialogResult = DialogResult.OK;
 		}
 
 		private void ButAppend_Click(object sender, EventArgs e)
 		{
 			var newins = CreateInstruction();
-			if (newins != null)
-				MethodDefinition.Body.GetILProcessor().Append(newins);
+			if (newins == null)
+				return;
+
+			MethodDefinition.Body.GetILProcessor().Append(newins);
+			DialogResult = DialogResult.OK;
 		}
 
 		protected override void Operands_SelectedIndexChanged(object sender, EventArgs e)

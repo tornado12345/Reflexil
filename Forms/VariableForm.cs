@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2016 Sebastien LEBRETON
+/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -38,11 +38,8 @@ namespace Reflexil.Forms
 
 		protected VariableDefinition CreateVariable()
 		{
-			var result =
-				new VariableDefinition(CecilImporter.Import(MethodDefinition.DeclaringType.Module, TypeSpecificationEditor.SelectedTypeReference, MethodDefinition))
-				{
-					Name = ItemName.Text
-				};
+			var result = new VariableDefinition(CecilImporter.Import(MethodDefinition.DeclaringType.Module,
+				TypeSpecificationEditor.SelectedTypeReference, MethodDefinition));
 			return result;
 		}
 

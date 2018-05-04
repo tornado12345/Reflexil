@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2016 Sebastien LEBRETON
+/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -48,10 +48,10 @@ namespace Reflexil.Forms
 			InitializeComponent();
 		}
 
-		public virtual DialogResult ShowDialog(TypeDefinition tdef, TypeReference selected)
+		public virtual DialogResult ShowDialog(TypeDefinition tdef, InterfaceImplementation selected)
 		{
 			TypeDefinition = tdef;
-			SelectedTypeReference = selected;
+			SelectedTypeReference = selected.InterfaceType;
 			return ShowDialog();
 		}
 

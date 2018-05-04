@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2016 Sebastien LEBRETON
+/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -36,9 +36,10 @@ namespace Reflexil.Forms
 		{
 			if (IsFormComplete)
 			{
-				var index = TypeDefinition.Interfaces.IndexOf(SelectedTypeReference);
-				TypeDefinition.Interfaces.RemoveAt(index);
-				TypeDefinition.Interfaces.Insert(index, CecilImporter.Import(TypeDefinition.Module, TypeReferenceEditor.SelectedOperand, TypeDefinition));
+				var index = TypeDefinition.LegacyInterfaces.IndexOf(SelectedTypeReference);
+				var iface = TypeDefinition.Interfaces[index];
+
+				iface.InterfaceType = CecilImporter.Import(TypeDefinition.Module, TypeReferenceEditor.SelectedOperand, TypeDefinition);
 				DialogResult = DialogResult.OK;
 			}
 			else

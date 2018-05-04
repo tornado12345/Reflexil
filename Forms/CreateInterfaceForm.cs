@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2016 Sebastien LEBRETON
+/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,6 +21,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 
 using System;
 using System.Windows.Forms;
+using Mono.Cecil;
 using Reflexil.Utils;
 
 namespace Reflexil.Forms
@@ -36,9 +37,11 @@ namespace Reflexil.Forms
 		{
 			if (IsFormComplete)
 			{
-				var interfaces = TypeDefinition.Interfaces;
-				interfaces.Insert(interfaces.IndexOf(SelectedTypeReference),
-					CecilImporter.Import(TypeDefinition.Module, TypeReferenceEditor.SelectedOperand, TypeDefinition));
+				var newInterface = new InterfaceImplementation(CecilImporter.Import(TypeDefinition.Module, TypeReferenceEditor.SelectedOperand, TypeDefinition));
+				var index = TypeDefinition.LegacyInterfaces.IndexOf(SelectedTypeReference);
+
+				TypeDefinition.Interfaces.Insert(index, newInterface);
+
 				DialogResult = DialogResult.OK;
 			}
 			else
@@ -51,9 +54,11 @@ namespace Reflexil.Forms
 		{
 			if (IsFormComplete)
 			{
-				var interfaces = TypeDefinition.Interfaces;
-				interfaces.Insert(interfaces.IndexOf(SelectedTypeReference) + 1,
-					CecilImporter.Import(TypeDefinition.Module, TypeReferenceEditor.SelectedOperand, TypeDefinition));
+				var newInterface = new InterfaceImplementation(CecilImporter.Import(TypeDefinition.Module, TypeReferenceEditor.SelectedOperand, TypeDefinition));
+				var index = TypeDefinition.LegacyInterfaces.IndexOf(SelectedTypeReference) + 1;
+
+				TypeDefinition.Interfaces.Insert(index, newInterface);
+
 				DialogResult = DialogResult.OK;
 			}
 			else
@@ -66,8 +71,8 @@ namespace Reflexil.Forms
 		{
 			if (IsFormComplete)
 			{
-				var interfaces = TypeDefinition.Interfaces;
-				interfaces.Add(CecilImporter.Import(TypeDefinition.Module, TypeReferenceEditor.SelectedOperand, TypeDefinition));
+				var newInterface = new InterfaceImplementation(CecilImporter.Import(TypeDefinition.Module, TypeReferenceEditor.SelectedOperand, TypeDefinition));
+				TypeDefinition.Interfaces.Add(newInterface);
 				DialogResult = DialogResult.OK;
 			}
 			else

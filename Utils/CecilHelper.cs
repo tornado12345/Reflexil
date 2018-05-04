@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2016 Sebastien LEBRETON
+/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -142,8 +142,7 @@ namespace Reflexil.Utils
 			var worker = nb.GetILProcessor();
 
 			foreach (var var in body.Variables)
-				nb.Variables.Add(new VariableDefinition(
-					var.Name, FixTypeImport(context, var.VariableType)));
+				nb.Variables.Add(new VariableDefinition(FixTypeImport(context, var.VariableType)));
 
 			foreach (var instr in body.Instructions)
 			{
