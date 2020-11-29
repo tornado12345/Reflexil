@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
+/* Reflexil Copyright (c) 2007-2020 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -28,12 +28,12 @@ namespace Reflexil.Compilation
 {
 	internal class CSharpHelper : BaseLanguageHelper
 	{
-		protected const string GenericConstraintListStart = " : ";
-		protected const string RegionStart = "#region ";
-		protected const string RegionEnd = "#endregion ";
-		protected const string Separator = ";";
-		protected const string Comment = "// ";
-		protected const string At = "@";
+		private const string GenericConstraintListStart = " : ";
+		private const string RegionStart = "#region ";
+		private const string RegionEnd = "#endregion ";
+		private const string Separator = ";";
+		private const string Comment = "// ";
+		private const string At = "@";
 
 		public CSharpHelper()
 		{
@@ -66,6 +66,7 @@ namespace Reflexil.Compilation
 				if (str == keyword)
 					str = At + str;
 			}
+
 			return str;
 		}
 
@@ -80,7 +81,7 @@ namespace Reflexil.Compilation
 			{
 				Write(CSharpKeywords.where, SpaceSurrounder.Both);
 				genparam.Accept(this);
-				VisitVisitableCollection(GenericConstraintListStart, String.Empty, BasicSeparator, false, genparam.Constraints);
+				VisitVisitableCollection(GenericConstraintListStart, string.Empty, BasicSeparator, false, genparam.Constraints);
 			}
 		}
 
@@ -122,7 +123,7 @@ namespace Reflexil.Compilation
 			{
 				Write(CSharpKeywords.where, SpaceSurrounder.Both);
 				genparam.Accept(this);
-				VisitVisitableCollection(GenericConstraintListStart, String.Empty, BasicSeparator, false, genparam.Constraints);
+				VisitVisitableCollection(GenericConstraintListStart, string.Empty, BasicSeparator, false, genparam.Constraints);
 			}
 		}
 
@@ -146,6 +147,7 @@ namespace Reflexil.Compilation
 				Write(item);
 				WriteLine(Separator);
 			}
+
 			WriteLine(RegionEnd);
 		}
 
@@ -248,7 +250,6 @@ namespace Reflexil.Compilation
 			var git = type as GenericInstanceType;
 			if (git != null)
 				VisitVisitableCollection(LeftChevron, RightChevron, BasicSeparator, false, git.GenericArguments);
-
 		}
 
 		public override void VisitGenericParameterCollection(Mono.Collections.Generic.Collection<GenericParameter> genparams)

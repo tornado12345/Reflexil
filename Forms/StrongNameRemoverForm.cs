@@ -1,4 +1,4 @@
-﻿/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
+﻿/* Reflexil Copyright (c) 2007-2020 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -68,6 +68,7 @@ namespace Reflexil.Forms
 			{
 				MessageBox.Show(string.Format("Reflexil is unable to load this assembly: {0}", ex.Message));
 			}
+
 			return null;
 		}
 
@@ -139,7 +140,7 @@ namespace Reflexil.Forms
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(String.Format("Reflexil is unable to save this assembly: {0}", ex.Message));
+				MessageBox.Show(string.Format("Reflexil is unable to save this assembly: {0}", ex.Message));
 			}
 		}
 

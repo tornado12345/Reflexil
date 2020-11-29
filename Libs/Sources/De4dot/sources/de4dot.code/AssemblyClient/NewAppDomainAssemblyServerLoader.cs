@@ -1,4 +1,4 @@
-﻿/*
+/*
     Copyright (C) 2011-2015 de4dot@gmail.com
 
     This file is part of de4dot.
@@ -17,6 +17,7 @@
     along with de4dot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#if NETFRAMEWORK
 using System;
 using System.Threading;
 using AssemblyData;
@@ -38,7 +39,13 @@ namespace de4dot.code.AssemblyClient {
 			appDomain = AppDomain.CreateDomain(Utils.RandomName(15, 20));
 			thread = new Thread(new ThreadStart(() => {
 				try {
+#if NET35
 					appDomain.ExecuteAssembly(filename, null, new string[] {
+#elif NET45
+					appDomain.ExecuteAssembly(filename, new string[] {
+#else
+#error Unknown tfm
+#endif
 						((int)serviceType).ToString(), ipcName, ipcUri
 					});
 				}
@@ -84,3 +91,4 @@ namespace de4dot.code.AssemblyClient {
 		}
 	}
 }
+#endif

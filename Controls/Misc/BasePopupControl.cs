@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
+/* Reflexil Copyright (c) 2007-2020 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -39,9 +39,9 @@ namespace Reflexil.Editors
 				if (!Enabled)
 					return result;
 
-				if ((_mouseIsOver != null) && (bool) _mouseIsOver.GetValue(this, null))
+				if ((_mouseIsOver != null) && (bool)_mouseIsOver.GetValue(this, null))
 				{
-					if ((_mouseIsDown != null) && (bool) _mouseIsDown.GetValue(this, null))
+					if ((_mouseIsDown != null) && (bool)_mouseIsDown.GetValue(this, null))
 					{
 						result = ComboBoxState.Pressed;
 					}
@@ -54,6 +54,7 @@ namespace Reflexil.Editors
 				{
 					result = ComboBoxState.Normal;
 				}
+
 				return result;
 			}
 		}
@@ -78,7 +79,7 @@ namespace Reflexil.Editors
 
 		protected override void OnPaint(PaintEventArgs pevent)
 		{
-			ComboBoxState state = State;
+			var state = State;
 			base.OnPaint(pevent);
 			const int xsize = 17;
 			//const int ysize = 19;

@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
+/* Reflexil Copyright (c) 2007-2020 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -19,7 +19,6 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 
-using System;
 using System.Collections.Generic;
 using Mono.Cecil;
 using Reflector.CodeModel;
@@ -29,12 +28,13 @@ namespace Reflexil.Plugins.Reflector
 {
 	internal sealed class ReflectorAssemblyContext : BaseAssemblyContext
 	{
-
 		private readonly Dictionary<IMethodDeclaration, MethodDefinition> _methodcache;
 		private readonly Dictionary<IPropertyDeclaration, PropertyDefinition> _propertycache;
 		private readonly Dictionary<IFieldDeclaration, FieldDefinition> _fieldcache;
 		private readonly Dictionary<IEventDeclaration, EventDefinition> _eventcache;
+
 		private readonly Dictionary<IResource, Resource> _resourcecache;
+
 		//fix: use toString() instead of object himself (getHashcode seems to be overriden)
 		private readonly Dictionary<string, AssemblyNameReference> _assemblynamereferencecache;
 		private readonly Dictionary<ITypeDeclaration, TypeDefinition> _typecache;
@@ -46,7 +46,7 @@ namespace Reflexil.Plugins.Reflector
 			_fieldcache = new Dictionary<IFieldDeclaration, FieldDefinition>();
 			_eventcache = new Dictionary<IEventDeclaration, EventDefinition>();
 			_resourcecache = new Dictionary<IResource, Resource>();
-			_assemblynamereferencecache = new Dictionary<String, AssemblyNameReference>();
+			_assemblynamereferencecache = new Dictionary<string, AssemblyNameReference>();
 			_typecache = new Dictionary<ITypeDeclaration, TypeDefinition>();
 		}
 

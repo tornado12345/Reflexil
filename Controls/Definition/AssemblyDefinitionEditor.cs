@@ -1,4 +1,4 @@
-﻿/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
+﻿/* Reflexil Copyright (c) 2007-2020 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -37,7 +37,7 @@ namespace Reflexil.Editors
 				if (!(CbxAssemblies.SelectedItem is IAssemblyWrapper))
 					return null;
 
-				var location = (CbxAssemblies.SelectedItem as IAssemblyWrapper).Location;
+				var location = ((IAssemblyWrapper) CbxAssemblies.SelectedItem).Location;
 				var context = PluginFactory.GetInstance().GetAssemblyContext(location);
 				return context.AssemblyDefinition;
 			}
@@ -58,7 +58,7 @@ namespace Reflexil.Editors
 		object IOperandEditor.SelectedOperand
 		{
 			get { return SelectedOperand; }
-			set { SelectedOperand = (AssemblyDefinition) value; }
+			set { SelectedOperand = (AssemblyDefinition)value; }
 		}
 
 		public string Label

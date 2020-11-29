@@ -1,4 +1,4 @@
-Reflexil [![Build status](https://ci.appveyor.com/api/projects/status/4gei05fyuj59feei?svg=true)](https://ci.appveyor.com/project/sailro/reflexil)
+Reflexil [![Build Status](https://sailro.visualstudio.com/Reflexil/_apis/build/status/sailro.Reflexil?branchName=master)](https://sailro.visualstudio.com/Reflexil/_build/latest?definitionId=2&branchName=master)
 ========
 
 The .NET Assembly Editor
@@ -10,7 +10,7 @@ Homepage: http://reflexil.net
 Howto: http://www.codeproject.com/KB/msil/reflexil.aspx
 
 Compatible with:
-- [ILSpy version 3.2](https://github.com/icsharpcode/ILSpy/releases/tag/v3.2.0) (ILSpy 4 is not currently compatible with Reflexil, given the use of  System.Reflection.Metadata, deprecating Mono.Cecil usage)
+- ILSpy
 - Reflector
 - Telerik JustDecompile
 
@@ -21,4 +21,4 @@ Videos:
 
 Download stable releases here: https://github.com/sailro/Reflexil/releases
 
-or nightly releases here: https://ci.appveyor.com/project/sailro/reflexil/build/artifacts
+or nightly releases here: https://sailro.visualstudio.com/Reflexil/_build?definitionId=2&_a=summary&view=runs

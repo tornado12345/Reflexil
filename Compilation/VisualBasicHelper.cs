@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
+/* Reflexil Copyright (c) 2007-2020 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -28,9 +28,9 @@ namespace Reflexil.Compilation
 	internal class VisualBasicHelper : BaseLanguageHelper
 	{
 		protected const string NewLine = " _";
-		protected const string Comment = "' ";
-		protected const string RegionStart = "#Region ";
-		protected const string RegionEnd = "#End Region ";
+		private const string Comment = "' ";
+		private const string RegionStart = "#Region ";
+		private const string RegionEnd = "#End Region ";
 
 		private readonly Stack<bool> _displayConstraintsStack = new Stack<bool>();
 
@@ -74,6 +74,7 @@ namespace Reflexil.Compilation
 				if (str.ToLower() == keyword.ToLower())
 					str = LeftBracket + str + RightBracket;
 			}
+
 			return str;
 		}
 
@@ -84,6 +85,7 @@ namespace Reflexil.Compilation
 				WriteComment("This method is 'unsafe' and cannot be used in VB.NET");
 				Write(Comment);
 			}
+
 			mref.Accept(this);
 
 			if (mref.ReturnType.FullName == typeof(void).FullName)
@@ -163,6 +165,7 @@ namespace Reflexil.Compilation
 				Write(VisualBasicKeywords.Imports, SpaceSurrounder.After);
 				WriteLine(item);
 			}
+
 			WriteLine(RegionEnd);
 		}
 
@@ -258,7 +261,7 @@ namespace Reflexil.Compilation
 
 			if (_displayConstraintsStack.Peek() && type is GenericParameter)
 			{
-				VisitVisitableCollection(Surround(VisualBasicKeywords.As, SpaceSurrounder.Both) + LeftBrace, RightBrace, BasicSeparator, false, ((GenericParameter) type).Constraints);
+				VisitVisitableCollection(Surround(VisualBasicKeywords.As, SpaceSurrounder.Both) + LeftBrace, RightBrace, BasicSeparator, false, ((GenericParameter)type).Constraints);
 			}
 		}
 

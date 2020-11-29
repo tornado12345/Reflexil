@@ -1,4 +1,4 @@
-/* Reflexil Copyright (c) 2007-2018 Sebastien Lebreton
+/* Reflexil Copyright (c) 2007-2020 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -64,7 +64,7 @@ namespace Reflexil.Handlers
 			InitializeComponent();
 		}
 
-		public void HandleItem(ModuleDefinition moddef)
+		private void HandleItem(ModuleDefinition moddef)
 		{
 			_moddef = moddef;
 
